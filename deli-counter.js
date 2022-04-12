@@ -1,41 +1,51 @@
+/*
+Build the line function that takes in an array and returns a string containing everyone 
+with their current place in the line. See the example below for how this should be formatted. 
+If there is nobody in line, it should say "The line is currently empty.".
+*/
+
 const katzDeli = []
 
-function takeANumber(array, name){
- 
-  katzDeli.push(name)
-    return `Welcome, ${name}. You are number ${array.length} in line`
-}
-
-const customerLine = ["Ada", "Grace", "Kent"]
-
-function line(array, string){
-  const newLineArray = []
-  for(let i = 0; i < array.length; i++){
-    newLineArray.push(array[i])
-  }
+function line(array){
   if(array.length === 0){
-    return "The line is currently empty."
-  } else {
-    return (`The line is currently ${string}.`)
-  }
-  return newLineArray
-  
-}
-// console.log(takeANumber(katzDeli, "Ada"))
-// console.log(takeANumber(katzDeli, "Grace"))
-// console.log(takeANumber(katzDeli, "Kent"))
-
-function nowServing(deliCounterLine){
-    if(deliCounterLine.length > 0){
-        return `Currently serving: ${deliCounterLine.shift()}.` 
-        
-    } else{
-        return "There is nobody waiting to be served!"
-
+    console.log("The line is currently empty.")
+  } else{
+    let deliClientLine = ""
+    for(let i = 0; i < array.length; i++){
+      deliClientLine += `${i+1}.${array[i]}`  
     }
-
+     return `The line is currently: ${deliClientLine}`
+  }
 }
+  console.log(line(katzDeli))
 
+/*
+Build a function that a new customer will use when entering the deli. 
+The takeANumber function should accept two arguments, the array for the 
+current line of people (katzDeli), and a string containing the name of the
+ person joining the end of the line. The method should call out (console.log()) 
+ the person's name along with their position in line. Top-Tip: Remember that people 
+ like to count from 1, not from 0 ("zero") like computers.
+*/
+
+
+  function takeANumber(array, name){
+ 
+    array.push(name)
+      return `Welcome, ${name}.You are number ${array.length} in line`
+  }
+  takeANumber(katzDeli, "Ada")
+
+/*
+Build the nowServing function which should call out (i.e. console.log()) the next 
+person in line and then remove them from the front. If there is nobody in line, it 
+should call out (console.log()) that "There is nobody waiting to be served!".
+*/
+
+function nowServing(array){
+        console.log(`Currently serving ${array.shift()}`)    
+    } 
+    nowServing(katzDeli)
 
 
 // 1. Write your functions here
